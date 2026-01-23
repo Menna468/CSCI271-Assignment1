@@ -137,10 +137,6 @@ public class CSCI271_Assignment1_MennaIbrahim_W30662641 {
                 
 
         }
-            
-
-
-        
 
         input.close(); //closes the scanner
     }
