@@ -32,7 +32,7 @@
 
 import java.util.Scanner;
 
-public class CSCI271_Assignment1_MennaIbrahim_W30662641 {
+public class CSCI271_Assignment1_MennaIbrahim {
     public static void main(String[] args) {
         boolean grades = true; //to check if the grades are there 
 
