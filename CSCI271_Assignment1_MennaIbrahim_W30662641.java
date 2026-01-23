@@ -35,11 +35,11 @@ import java.util.Scanner;
 public class CSCI271_Assignment1_MennaIbrahim_W30662641 {
     public static void main(String[] args) {
         //decalaring and initializing variables
-        double E = 0;
-        double assignment = 0;
-        double totalAssignments = 0;
-        double test;
-        double tests = 0;
+        double E = 0; //the average grade for all tests, midterm, and final exam
+        double assignment = 0; //for each assignment 
+        double totalAssignments = 0; //for all assginments together
+        double test; //for each test
+        double tests = 0; //for all tests together
         boolean grades = true; //to check if the grades are there 
 
 
@@ -49,49 +49,50 @@ public class CSCI271_Assignment1_MennaIbrahim_W30662641 {
         
         while (grades) {
             //For the assignments, it takes the grades from file and calculates the average weight 
-            //System.out.print("Enter your assignments grades: ");
+            //the for loop takes the first 7 scores and reads them as assignments 
             for (int i = 0; i < 7; i++) {
                 assignment = input.nextInt();
+                //if the assignment score was -1 then it stops by exiting the for loop
                 if (assignment <= -1) {
                     grades = false;
                     System.exit(-1);
                 }
                 
-                totalAssignments += assignment;
+                totalAssignments += assignment; //adds every new assignment score to all assignments
 
                 
             }
-            totalAssignments = totalAssignments / 7;
-            System.out.print("Total assignments grade: ");
+            totalAssignments = totalAssignments / 7; //gets the average of all 7 assignemnts
+            System.out.println();
+            System.out.print("Average score of assignments: ");
             System.out.println(String.format("%.2f", totalAssignments));
-            //System.out.println();
             
             //For the tests, it takes the grades from file and calculates the average weight 
-            //System.out.print("Enter your tests grades: ");
+            //the for loop takes the second 7 scores and reads them as tests
             for (int i = 0; i < 7; i++) {
                 test = input.nextInt();
+                //if the test score was -1 then it stops by exiting the for loop
                 if (test <= -1) {
                     grades = false;
                     System.exit(-1);
                 }
-                tests += test;
+                tests += test; //adds every new test score to all tests
                 
             }
-            tests = tests / 7;
-            System.out.print("Total tests grade: ");
+            tests = tests / 7; //gets the average of all 7 tests
+            System.out.print("Average score of tests: ");
             System.out.println (String.format("%.2f", tests));
-            //System.out.println();
             
             //For the midterm and the final exam grades
-            //System.out.print("Enter your midterm grade: ");
             int midterm = input.nextInt();
+            //if the midterm score was -1 then it stops by breaking out the loop
             if (midterm <= -1) {
                     grades = false;
                     break;
                 }
 
-            //System.out.print("Enter your final grade: ");
             int finalExam = input.nextInt();
+            //if the final exam score was -1 then it stops by breaking out the loop
             if (finalExam <= -1) {
                     grades = false;
                     break;
@@ -101,32 +102,32 @@ public class CSCI271_Assignment1_MennaIbrahim_W30662641 {
             E = (((0.4 * finalExam) + (0.2 * midterm) + (0.1 * tests)) / 0.7);
             System.out.print("E is: " );
             System.out.println(String.format("%.2f", E));
-            //System.out.println();
 
             //the equation for the weight of the assignments
             double W = ((E - 60.0) / 20.0) * 0.3;
         
             //depending on the tests and exams average grade, it will output the equation for it
+            //if E was below 60 then we print out final score as E
             if (E < 60) {
-                    System.out.print("Since E is less than 60: ");
+                    System.out.print("Since E is less than 60, so your final score is: ");
                     System.out.println(String.format("%.2f",E));
                 }
                 
-                
+                //if E was above 80 then we add the assignments to the equation
                 else if (E >= 80) {
-                    System.out.print("Since E is more than 80: ");
+                    System.out.print("Since E is more than 80, so your final score is: ");
                     System.out.println(String.format("%.2f", (0.4 * finalExam) + (0.2 * midterm) + (0.1 * tests) + (0.3 * totalAssignments)));
                 }
 
-                else if (E >= 60 || E < 80) {
-                    System.out.print("Since E is between 60 and 80: ");
+                //if E was between 60 and 80 then we increase the weight of the assignments based on how the student did in E and add it to the equation
+                else if (E >= 60 && E < 80) {
+                    System.out.print("Since E is between 60 and 80, so your final score is: ");
                     System.out.println(String.format("%.2f", ( 1 - W) * E + (W * totalAssignments)));
                     
                 }
             
-                System.out.println();
-                System.out.println();
-                System.out.println("********************************************************************");
+                System.out.println("---------------------------------------------------------------------"); //divider
+                
 
         }
             
@@ -134,6 +135,6 @@ public class CSCI271_Assignment1_MennaIbrahim_W30662641 {
 
         
 
-        input.close();
+        input.close(); //closes the scanner
     }
     }
